@@ -1,0 +1,12 @@
+{
+  "name": "glass-opengl",
+  "version": "0.1.0",
+  "dependencies": [
+    "glfw3",
+    "glm",
+    "stb",
+    "assimp",
+    "glad"
+  ],
+  "builtin-baseline": "e1c3f3a3f8c3d2a3e4f3b2c1d4e5f6a7b8c9d0e1"
+}

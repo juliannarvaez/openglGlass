@@ -1,0 +1,64 @@
+{
+	"version": 6,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 20,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "with-manifest",
+			"cacheVariables": {
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+				"VCPKG_MANIFEST_MODE": "ON"
+			}
+		},
+		{
+			"name": "x64-debug",
+			"displayName": "Debug (Ninja)",
+			"description": "Debug build with Ninja generator",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/out/build/x64-debug",
+			"cacheVariables": {
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+				"CMAKE_BUILD_TYPE": "Debug",
+				"VCPKG_INSTALLED_DIR": "$env{VCPKG_ROOT}/_vcpkg_installed"
+			}
+		},
+		{
+			"name": "x64-release",
+			"displayName": "Release (Ninja)",
+			"description": "Release build with Ninja generator",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/out/build/x64-release",
+			"cacheVariables": {
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake",
+				"CMAKE_BUILD_TYPE": "Debug",
+				"VCPKG_INSTALLED_DIR": "$env{VCPKG_ROOT/_vcpkg_installed"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "build-debug",
+			"configurePreset": "x64-debug"
+		},
+		{
+			"name": "build-release",
+			"configurePreset": "x64-release"
+		}
+	],
+	"testPresets": [
+		{
+			"name": "test-debug",
+			"configurePreset": "x64-debug",
+			"output": {
+				"outputOnFailure": true
+			},
+			"execution": {
+				"noTestsAction": "error",
+				"stopOnFailure": true
+			}
+		}
+	]
+}

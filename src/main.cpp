@@ -287,21 +287,21 @@ int main()
 
 
         // glass teapot
-        glassShader.use();
+        smokeShader.use();
         model = glm::mat4(1.0f);
         model = glm::scale(model, glm::vec3(.1f, .1f, .1f));
         view = camera.GetViewMatrix();
         projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        glassShader.setMat4("view", view);
-        glassShader.setMat4("projection", projection);
+        smokeShader.setMat4("view", view);
+        smokeShader.setMat4("projection", projection);
         
         glBindVertexArray(cubeVAO);
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureColorbuffer);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-        glassShader.setMat4("model", model);
+        smokeShader.setMat4("model", model);
         
-        ourModel.Draw(glassShader);
+        ourModel.Draw(smokeShader);
 
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
